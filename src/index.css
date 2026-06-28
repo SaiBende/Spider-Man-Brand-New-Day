@@ -2,7 +2,8 @@
 
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bebas Neue', 'Inter', system-ui, sans-serif;
+  --font-poppins: 'Poppins', system-ui, sans-serif;
 
   --color-spider-red: #e62429;
   --color-spider-red-dark: #b91c20;

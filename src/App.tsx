@@ -1,6 +1,8 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, lazy, Suspense } from "react"
 import { MOVIE } from "./data/movieData"
 import { useInView } from "./hooks/useInView"
+
+const TicketSection = lazy(() => import("./components/TicketSection"))
 import {
   Play,
   Calendar,
@@ -189,8 +191,15 @@ function Hero() {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <a
+            href="#fanpass"
+            className="group inline-flex items-center gap-3 bg-gradient-to-r from-spider-red to-spider-red-dark hover:from-spider-red-dark hover:to-spider-red text-white font-bold text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all hover:scale-105 active:scale-95 shadow-lg shadow-spider-red/20"
+          >
+            <Ticket className="w-5 h-5" />
+            Get Your Fan Pass
+          </a>
+          <a
             href="#trailer"
-            className="group inline-flex items-center gap-3 bg-spider-red hover:bg-spider-red-dark text-white font-bold text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all hover:scale-105 active:scale-95 animate-pulse-glow"
+            className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/15 backdrop-blur-sm border border-white/20 text-white font-semibold text-sm sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all hover:scale-105 active:scale-95"
           >
             <Play className="w-5 h-5 fill-white" />
             Watch Trailer
@@ -784,6 +793,9 @@ export default function App() {
       <Cast />
       <Details />
       <Countdown />
+      <Suspense fallback={null}>
+        <TicketSection />
+      </Suspense>
       <Footer />
     </div>
   )
